@@ -1,0 +1,36 @@
+﻿@model fa22_finalproject_32.Models.StockTransaction
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>StockTransaction</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumofShares)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumofShares)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pricepershare)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pricepershare)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StockTransactionDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StockTransactionDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.StockTransactionID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

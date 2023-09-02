@@ -1,0 +1,78 @@
+﻿@model fa22_finalproject_32.Models.ViewModels.SearchViewModel
+
+@{
+    ViewData["Title"] = "DetailedSearch";
+}
+
+<h1>Detailed Transaction Search</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DetailedSearch" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TransactionComments" class="control-label"></label>
+                <input asp-for="TransactionComments" class="form-control" />
+                <span asp-validation-for="TransactionComments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedTransactionType" class="control-label"></label>
+                <select asp-for="SelectedTransactionType" asp-items="Html.GetEnumSelectList<TransactionType>()" class="form-control">
+                    <option selected="selected" value="">All Types</option>
+                </select>
+                <span asp-validation-for="SelectedTransactionType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinAmount" class="control-label"></label>
+                <input asp-for="MinAmount" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="MinAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxAmount" class="control-label"></label>
+                <input asp-for="MaxAmount" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="MaxAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactionId" class="control-label"></label>
+                <input asp-for="TransactionId" class="form-control" />
+                <span asp-validation-for="TransactionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EarliestDate" class="control-label"></label>
+                <input asp-for="EarliestDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LatestDate" class="control-label"></label>
+                <input asp-for="LatestDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                    <label asp-for="SelectedSort" class="control-label"></label><br />
+                    <input type="radio" class="radio" asp-for="SelectedSort" value="@Sort.Descending" checked="checked" /> Descending<br />
+                    <input type="radio" class="radio" asp-for="SelectedSort" value="@Sort.Ascending" /> Ascending<br />
+            </div>
+            <div class="form-group">
+                    <label asp-for="SelectedSortBy" class="control-label"></label>
+                    <select asp-for="SelectedSortBy" asp-items="Html.GetEnumSelectList<SortBy>()" class="form-control">
+                    <option selected="selected" value="">All Types</option>
+                    </select>
+                    <span asp-validation-for="SelectedSortBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+            
+      </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }*@
+

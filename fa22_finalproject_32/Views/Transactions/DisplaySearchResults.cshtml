@@ -1,0 +1,81 @@
+﻿@model IEnumerable<fa22_finalproject_32.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<br />
+<h1>Search Results</h1>
+<p>Displaying @ViewBag.SelectedTransactions out of @ViewBag.AllTransactions Transactions</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ToAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Approved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Approved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisputeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisputeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionComments)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToAccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromAccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Approved)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisputeDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionComments)
+                </td>
+                <td>
+                    <a asp-action="DisplaySearchResults" asp-controller="Transactions" asp-route-id="@item.TransactionID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 

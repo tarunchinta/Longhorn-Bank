@@ -1,0 +1,77 @@
+﻿@model IEnumerable<fa22_finalproject_32.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+Displaying @ViewBag.SelectedTransactions out of @ViewBag.AllTransactions
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hiddenAccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hiddenAccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AccountID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AccountID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Admin"))
+            {
+            <a asp-action="Index" asp-controller="RoleAdmin" class="btn btn-danger">Admin Roles</a>
+            <img class="w-50 h-auto rounded mx-auto d-block"
+                 src="~/images/Texas-Longhorn.jpeg" alt="Texas Longhorn looking at camera"
+                 title="Texas-Longhorn" />
+            }
+        }
+    @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Employee"))
+            {
+        <a asp-action="Index" asp-controller="RoleAdmin" class="btn btn-danger">Employee Roles</a>
+        <img class="w-50 h-auto rounded mx-auto d-block"
+             src="~/images/Texas-Longhorn.jpeg" alt="Texas Longhorn looking at camera"
+             title="Texas-Longhorn" />
+                }
+     
+
+        }
+</table>

@@ -1,0 +1,52 @@
+﻿@model fa22_finalproject_32.Models.Transaction
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Transfer</h1>
+<p><span class="text-danger">@ViewBag.errMsg</span></p>
+@*<h4>Transaction</h4>
+*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Transfer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="FromAccount" class="control-label"></label>
+                @Html.DropDownList("SelectedFromAccount", (SelectList)ViewBag.AllAccounts, new { @class = "form-control" })
+            </div>
+
+            
+            
+            <div class="form-group">
+                <label asp-for="ToAccount" class="control-label"></label>
+                @Html.DropDownList("SelectedToAccount", (SelectList)ViewBag.AllAccounts, new { @class = "form-control" })
+            </div>
+            
+
+
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" value=@ViewBag.Amount />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisputeDate" class="control-label"></label>
+                <input asp-for="DisputeDate" class="form-control" value=@ViewBag.Now />
+                <span asp-validation-for="DisputeDate" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Transfer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
